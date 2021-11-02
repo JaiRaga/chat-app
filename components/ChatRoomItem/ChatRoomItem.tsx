@@ -3,7 +3,7 @@ import { View, Image, Text, StyleSheet } from 'react-native'
 import styles from './styles'
 
 const ChatRoomItem = ({ chatRoom }) => {
-	const user = chatRoom.users[0]
+	const user = chatRoom.users[1]
 	return (
 		<View style={styles.container}>
 			<Image
@@ -12,9 +12,11 @@ const ChatRoomItem = ({ chatRoom }) => {
 				}}
 				style={styles.images}
 			/>
-			<View style={styles.badgeContainer}>
-				<Text style={styles.badgeText}>4</Text>
-			</View>
+			{chatRoom.newMessages && (
+				<View style={styles.badgeContainer}>
+					<Text style={styles.badgeText}>{chatRoom.newMessages}</Text>
+				</View>
+			)}
 			<View style={styles.userInfoParent}>
 				<View style={styles.userInfo}>
 					<Text style={styles.username}>{user.name}</Text>
