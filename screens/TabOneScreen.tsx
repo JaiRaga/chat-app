@@ -1,33 +1,53 @@
-import * as React from 'react';
-import { StyleSheet } from 'react-native';
+import * as React from 'react'
+import { View, Image, Text, StyleSheet } from 'react-native'
 
-import EditScreenInfo from '../components/EditScreenInfo';
-import { Text, View } from '../components/Themed';
-import { RootTabScreenProps } from '../types';
-
-export default function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
-    </View>
-  );
+export default function TabOneScreen() {
+	return (
+		<View style={styles.container}>
+			<Image
+				source={{
+					uri: 'https://avatars.githubusercontent.com/u/44367062?v=4',
+				}}
+				style={styles.images}
+			/>
+			<View style={styles.userInfoParent}>
+				<View style={styles.userInfo}>
+					<Text style={styles.username}>Krishna Raga</Text>
+					<Text style={styles.userDetails}>1:22PM</Text>
+				</View>
+				<Text style={styles.userDetails}>Hello There!</Text>
+			</View>
+		</View>
+	)
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-});
+	container: {
+		flexDirection: 'row',
+		padding: 10,
+		// backgroundColor: '#456',
+	},
+	images: {
+		height: 60,
+		width: 60,
+		borderRadius: 50,
+		marginRight: 10,
+	},
+	userInfoParent: {
+		// backgroundColor: '#456',
+		flex: 1,
+	},
+	userInfo: {
+		flexDirection: 'row',
+		justifyContent: 'space-between',
+		// backgroundColor: '#000',
+	},
+	username: {
+		// backgroundColor: 'black',
+		fontWeight: 'bold',
+	},
+	userDetails: {
+		color: 'grey',
+		fontSize: 18,
+	},
+})
