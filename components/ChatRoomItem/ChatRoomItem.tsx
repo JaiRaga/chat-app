@@ -2,12 +2,13 @@ import React from 'react'
 import { View, Image, Text, StyleSheet } from 'react-native'
 import styles from './styles'
 
-const ChatRoomItem = () => {
+const ChatRoomItem = ({ chatRoom }) => {
+	const user = chatRoom.users[0]
 	return (
 		<View style={styles.container}>
 			<Image
 				source={{
-					uri: 'https://avatars.githubusercontent.com/u/44367062?v=4',
+					uri: user.imageUri,
 				}}
 				style={styles.images}
 			/>
@@ -16,29 +17,13 @@ const ChatRoomItem = () => {
 			</View>
 			<View style={styles.userInfoParent}>
 				<View style={styles.userInfo}>
-					<Text style={styles.username}>Krishna Raga</Text>
-					<Text style={styles.userDetails}>1:22PM</Text>
+					<Text style={styles.username}>{user.name}</Text>
+					<Text style={styles.userDetails}>
+						{chatRoom.lastMessage.createdAt}
+					</Text>
 				</View>
 				<Text numberOfLines={1} style={styles.userDetails}>
-					Hello There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!Hello There!Hello
-					There!Hello There!Hello There!Hello There!
+					{chatRoom.lastMessage.content}
 				</Text>
 			</View>
 		</View>
